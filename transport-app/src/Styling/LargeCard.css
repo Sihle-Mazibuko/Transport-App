@@ -1,0 +1,36 @@
+.Large-Card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: grey;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.323);
+  z-index: 1000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0);
+}
+
+.checkout-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background-color: #006cdf;
+}

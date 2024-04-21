@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./Components/NavBar";
+import RouteCard from "./Components/RouteCard";
+import Cart from "./JSX/Cart";
+import LargeCard from "./Components/LargeCard";
 
 function App() {
+  const [isLargeCardVisible, setIsLargeCardVisible] = useState(false);
+  const [selectedRoute, setSelectedRoute] = useState(null);
+
+  const handleRouteClick = (route) => {
+    setSelectedRoute(route);
+    setIsLargeCardVisible(true);
+  };
+
+  const handleCloseLargeCard = () => {
+    setIsLargeCardVisible(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <h1>Transport App</h1>
+          <NavBar />
+        </header>
+        <main>
+          <Routes>
+            {isLargeCardVisible ? null : (
+              <Route
+                path="/"
+                element={<RouteCard onRouteClick={handleRouteClick} />}
+              />
+            )}
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          {isLargeCardVisible && (
+            <LargeCard
+              clickedRoute={selectedRoute}
+              onClose={handleCloseLargeCard}
+            />
+          )}
+        </main>
+        <footer></footer>
+      </div>
+    </Router>
   );
 }
 
