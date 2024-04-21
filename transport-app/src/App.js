@@ -4,6 +4,7 @@ import NavBar from "./Components/NavBar";
 import RouteCard from "./Components/RouteCard";
 import Cart from "./JSX/Cart";
 import LargeCard from "./Components/LargeCard";
+import { CartProvider } from "./CartContext";
 
 function App() {
   const [isLargeCardVisible, setIsLargeCardVisible] = useState(false);
@@ -20,30 +21,32 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <header>
-          <h1>Transport App</h1>
-          <NavBar />
-        </header>
-        <main>
-          <Routes>
-            {isLargeCardVisible ? null : (
-              <Route
-                path="/"
-                element={<RouteCard onRouteClick={handleRouteClick} />}
+      <CartProvider>
+        <div className="App">
+          <header>
+            <h1>Transport App</h1>
+            <NavBar />
+          </header>
+          <main>
+            <Routes>
+              {isLargeCardVisible ? null : (
+                <Route
+                  path="/"
+                  element={<RouteCard onRouteClick={handleRouteClick} />}
+                />
+              )}
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+            {isLargeCardVisible && (
+              <LargeCard
+                clickedRoute={selectedRoute}
+                onClose={handleCloseLargeCard}
               />
             )}
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-          {isLargeCardVisible && (
-            <LargeCard
-              clickedRoute={selectedRoute}
-              onClose={handleCloseLargeCard}
-            />
-          )}
-        </main>
-        <footer></footer>
-      </div>
+          </main>
+          <footer></footer>
+        </div>
+      </CartProvider>
     </Router>
   );
 }
