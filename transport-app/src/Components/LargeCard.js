@@ -3,11 +3,11 @@ import "../Styling/LargeCard.css";
 import { XCircle } from "@phosphor-icons/react";
 import { useCart } from "../CartContext";
 
+// This component which is activated after clicking a smaller card will show detailed information regarding the clicked route
 function LargeCard({ clickedRoute, onClose }) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    console.log(`${clickedRoute.title}`);
     addToCart(clickedRoute);
   };
 

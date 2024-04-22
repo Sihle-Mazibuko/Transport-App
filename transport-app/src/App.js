@@ -5,6 +5,11 @@ import RouteCard from "./Components/RouteCard";
 import Cart from "./JSX/Cart";
 import LargeCard from "./Components/LargeCard";
 import { CartProvider } from "./CartContext";
+import ConfirmPage from "./JSX/ConfirmPage";
+
+/*Router Setup = We are using BrowserRouter from react-router-dom to enable routing functionality in our application.
+CartProvider = This component wraps the entire application, providing the context for managing the shopping cart state. 
+               It ensures that the cart data and related functions are available to all components within its scope. */
 
 function App() {
   const [isLargeCardVisible, setIsLargeCardVisible] = useState(false);
@@ -29,6 +34,8 @@ function App() {
           </header>
           <main>
             <Routes>
+              {/* Routing Logic = the Routes component from react-router-dom is used to handle the routing logic. 
+                            Different pages are specified along with their corresponding routes to be rendered when the conditions in other scriprs are met (button click)*/}
               {isLargeCardVisible ? null : (
                 <Route
                   path="/"
@@ -36,6 +43,7 @@ function App() {
                 />
               )}
               <Route path="/cart" element={<Cart />} />
+              <Route path="/confirm" element={<ConfirmPage />} />
             </Routes>
             {isLargeCardVisible && (
               <LargeCard
