@@ -9,7 +9,7 @@ import ConfirmPage from "./JSX/ConfirmPage";
 
 /*Router Setup = We are using BrowserRouter from react-router-dom to enable routing functionality in our application.
 CartProvider = This component wraps the entire application, providing the context for managing the shopping cart state. 
-               It ensures that the cart data and related functions are available to all components within its scope. */
+               It ensures that the cart data and related funtions are available to all components within its scope. */
 
 function App() {
   const [isLargeCardVisible, setIsLargeCardVisible] = useState(false);
